@@ -4,7 +4,7 @@
 */
 
 #include <stdio.h>
-#include <string.h> // strlen 함수를 쓰기 위해 반드시 포함해야 합니다.
+#include <string.h>
 
 int main() {
   char str[256];
