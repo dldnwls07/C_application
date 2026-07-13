@@ -4,22 +4,37 @@
 */
 
 #include <stdio.h>
+#include <string.h> // strlen 함수를 쓰기 위해 반드시 포함해야 합니다.
 
 int main() {
   char str[256];
-  int others = 0;
-  int i = 0;
+  int digits = 0; // 숫자 개수
+  int spaces = 0; // 공백 개수
+  int others = 0; // 그 외 문자 개수
 
   printf("문자열 입력하기 : ");
   fgets(str, sizeof(str), stdin);
 
-  while (str[i] != '\0') {
-    if (str[i] != '\n' && str[i] != ' ' && !(str[i] >= '0' && str[i] <= '9')) {
+  int len = strlen(str);
+  for (int i = 0; i < len; i++) {
+    if (str[i] == '\n') {
+      continue;
+    }
+
+    // 숫자
+    if (str[i] >= '0' && str[i] <= '9') {
+      digits++;
+    }
+    // 공백인
+    else if (str[i] == ' ') {
+      spaces++;
+      // 그외 문자
+    } else {
       others++;
     }
-    i++;
   }
-
+  printf("숫자 개수 : %d\n", digits);
+  printf("공백 개수 : %d\n", spaces);
   printf("그외 문자 개수 : %d\n", others);
 
   return 0;
